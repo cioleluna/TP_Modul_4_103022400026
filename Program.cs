@@ -27,6 +27,31 @@ public class KodePos
     }
 }
 
+public class DoorMachine
+{
+    public enum State { Terkunci, Terbuka };
+
+    private State currentState;
+
+    public DoorMachine()
+    {
+        currentState = State.Terkunci;
+        Console.WriteLine("Pintu terkunci");
+    }
+
+    public void BukaPintu()
+    {
+        currentState = State.Terbuka;
+        Console.WriteLine("Pintu tidak terkunci");
+    }
+
+    public void KunciPintu()
+    {
+        currentState = State.Terkunci;
+        Console.WriteLine("Pintu terkunci");
+    }
+}
+
 public class Program
 {
     public static void Main(string[] args)
@@ -61,5 +86,12 @@ public class Program
 
         Kelurahan kelurahan10 = Kelurahan.Maleer;
         Console.WriteLine("Kode Pos " + kelurahan10 + " adalah " + KodePos.getKodePos(kelurahan10));
+
+        Console.WriteLine("\n=== IMPLEMENTASI DOOR MACHINE ===");
+        DoorMachine pintu = new DoorMachine(); // Output: Pintu terkunci
+        pintu.BukaPintu();                     // Output: Pintu tidak terkunci
+        pintu.BukaPintu();                     // Output: Pintu tidak terkunci
+        pintu.KunciPintu();                    // Output: Pintu terkunci
+        pintu.KunciPintu();                    // Output: Pintu terkunci
     }
 }
